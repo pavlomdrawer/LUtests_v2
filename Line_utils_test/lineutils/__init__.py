@@ -29,24 +29,22 @@ for _module_name in (
     if _module_name in sys.modules:
         del sys.modules[_module_name]
 
-panelconnections = imp.load_source(
+_panelconnections_module = imp.load_source(
     "lineutils._panelconnections_module", _panelconnections_path
 )
-underground = imp.load_source("lineutils._underground_module", _underground_path)
+_underground_module = imp.load_source("lineutils._underground_module", _underground_path)
 
-LineUtils.PanelconnectionsModule = panelconnections
-LineUtils.UndergroundModule = underground
-LineUtils.Panelconnection = panelconnections.Panelconnection
-LineUtils.Underground = underground.Underground
-PanelconnectionsModule = panelconnections
-UndergroundModule = underground
-Panelconnection = panelconnections.Panelconnection
-Underground = underground.Underground
+LineUtils.PanelconnectionsModule = _panelconnections_module
+LineUtils.UndergroundModule = _underground_module
+LineUtils.Panelconnection = _panelconnections_module.Panelconnection
+LineUtils.Underground = _underground_module.Underground
+PanelconnectionsModule = _panelconnections_module
+UndergroundModule = _underground_module
+Panelconnection = _panelconnections_module.Panelconnection
+Underground = _underground_module.Underground
 
 __all__ = [
     "LineUtils",
-    "panelconnections",
-    "underground",
     "PanelconnectionsModule",
     "UndergroundModule",
     "Panelconnection",
