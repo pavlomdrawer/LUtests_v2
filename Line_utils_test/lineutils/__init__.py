@@ -22,20 +22,33 @@ _underground_path = os.path.join(
     _repo_root, "Underground_test", "Py", "underground.py"
 )
 
-for _module_name in ("LineUtils.Panelconnections", "LineUtils.Underground"):
+for _module_name in (
+    "lineutils._panelconnections_module",
+    "lineutils._underground_module",
+):
     if _module_name in sys.modules:
         del sys.modules[_module_name]
 
-panelconnections = imp.load_source("LineUtils.Panelconnections", _panelconnections_path)
-underground = imp.load_source("LineUtils.Underground", _underground_path)
+_panelconnections_module = imp.load_source(
+    "lineutils._panelconnections_module", _panelconnections_path
+)
+_underground_module = imp.load_source("lineutils._underground_module", _underground_path)
 
-LineUtils.Panelconnections = panelconnections
-LineUtils.Underground = underground
+LineUtils.PanelconnectionsModule = _panelconnections_module
+LineUtils.UndergroundModule = _underground_module
+LineUtils.Panelconnection = _panelconnections_module.Panelconnection
+LineUtils.Underground = _underground_module.Underground
+PanelconnectionsModule = _panelconnections_module
+UndergroundModule = _underground_module
+Panelconnection = _panelconnections_module.Panelconnection
+Underground = _underground_module.Underground
 
 __all__ = [
     "LineUtils",
-    "panelconnections",
-    "underground",
+    "PanelconnectionsModule",
+    "UndergroundModule",
+    "Panelconnection",
+    "Underground",
     "spacing_module",
     "conduitlookup_module",
     "selftest_module",
