@@ -30,12 +30,18 @@ panelconnections = imp.load_source("LineUtils.Panelconnections", _panelconnectio
 underground = imp.load_source("LineUtils.Underground", _underground_path)
 
 LineUtils.Panelconnections = panelconnections
-LineUtils.Underground = underground
+LineUtils.Panelconnection = panelconnections.Panelconnection
+LineUtils.UndergroundModule = underground
+LineUtils.Underground = underground.Underground
+Panelconnection = panelconnections.Panelconnection
+Underground = underground.Underground
 
 __all__ = [
     "LineUtils",
     "panelconnections",
     "underground",
+    "Panelconnection",
+    "Underground",
     "spacing_module",
     "conduitlookup_module",
     "selftest_module",
