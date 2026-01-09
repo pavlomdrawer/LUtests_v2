@@ -34,19 +34,13 @@ _panelconnections_module = imp.load_source(
 )
 _underground_module = imp.load_source("lineutils._underground_module", _underground_path)
 
-LineUtils.PanelconnectionsModule = _panelconnections_module
-LineUtils.UndergroundModule = _underground_module
 LineUtils.Panelconnection = _panelconnections_module.Panelconnection
 LineUtils.Underground = _underground_module.Underground
-PanelconnectionsModule = _panelconnections_module
-UndergroundModule = _underground_module
 Panelconnection = _panelconnections_module.Panelconnection
 Underground = _underground_module.Underground
 
 __all__ = [
     "LineUtils",
-    "PanelconnectionsModule",
-    "UndergroundModule",
     "Panelconnection",
     "Underground",
     "spacing_module",
